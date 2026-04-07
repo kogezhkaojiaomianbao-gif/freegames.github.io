@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MCJS - 网页版MC最佳中文版 - 官方网站 - MCJS.CC</title>
+  <meta name="description" content="在浏览器里玩MC" />
+  <meta name="keywords" content="WebMC, mcjs.cc, MCJS, eaglercraft, eaglercraftx, minecraft" />
+  <meta property="og:locale" content="zh-CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MCJS - 网页版MC最佳中文版官方网站 - MCJS.CC" />
+  <meta property="og:description" content="在浏览器里玩MC" />
+  <meta property="og:image" content="favicon.png" />
+  <link type="image/png" rel="shortcut icon" href="favicon.png" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel: #ffffff;
+      --panel-border: #e6e6e6;
+      --muted: #6b6b6b;
+      --accent: #22a84a;
+      --accent-contrast: #0f6b2d;
+      --chip-bg: #f1f5f9;
+      --text: #111;
+      --gap: 20px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Microsoft Yahei", Arial;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background-color: #f0f0f0;
+      margin: 20px 0;
+    }
+
+    .pp {
+      text-align: center;
+      margin: 12px 0 6px;
+      color: var(--accent-contrast);
+      font-size: 20px
+    }
+
+    .ppp {
+      text-align: center;
+      margin: 0px 0 22px;
+      color: var(--accent-contrast);
+      font-size: 15px
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      text-align: center;
+      margin: 12px 0 22px
+    }
+
+    .hero h1 {
+      color: var(--accent);
+      margin: 0;
+      font-size: 80px
+    }
+
+    .hero h2 {
+      color: var(--accent);
+      margin: 0;
+      font-size: 24px
+    }
+
+    .hero h3 {
+      color: var(--accent);
+      margin: 0;
+      font-size: 20px
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin-top: 8px
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--gap)
+    }
+
+    .card {
+      background: var(--panel);
+      color: var(--text);
+      padding: 18px;
+      border-radius: 0;
+      border: 1px solid var(--panel-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 150px;
+    }
+
+    .card .chip {
+      display: inline-block;
+      padding: 6px 8px;
+      font-size: 12px;
+      border-radius: 0;
+      background: var(--chip-bg);
+      color: var(--muted);
+    }
+
+    .card .chip1 {
+      display: inline-block;
+      padding: 6px 8px;
+      font-size: 12px;
+      border-radius: 0;
+      background: cornflowerblue;
+      color: white;
+    }
+
+    .card .chip2 {
+      display: inline-block;
+      padding: 6px 8px;
+      font-size: 12px;
+      border-radius: 0;
+      background: darkorchid;
+      color: white;
+    }
+
+    .card h3 {
+      margin: 6px 0 6px;
+      font-size: 18px
+    }
+
+    .ver {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px
+    }
+
+    .features {
+      font-size: 13px;
+      color: #333;
+      margin: 10px 0;
+      line-height: 1.5
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 16px;
+      text-decoration: none;
+      border-radius: 0;
+      font-weight: 700;
+      text-align: center;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      background: var(--accent-contrast);
+    }
+
+    .btno {
+      display: inline-block;
+      background: gainsboro;
+      color: gray;
+      padding: 10px 16px;
+      text-decoration: none;
+      border-radius: 0;
+      font-weight: 700;
+      text-align: center;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .doc {
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid #f0f0f0;
+      background: #fff;
+    }
+
+    .doc h3 {
+      margin: 12px 0;
+      font-size: 20px;
+      color: #222
+    }
+
+    .doc p {
+      margin: 8px 0;
+      color: var(--muted);
+      line-height: 1.6
+    }
+
+    .doc ul {
+      color: var(--muted)
+    }
+
+    .small {
+      font-size: 18px;
+      margin-bottom: 0px;
+      color: var(--text) !important
+    }
+
+    .why {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      flex-wrap: wrap
+    }
+
+    .why .item {
+      flex: 1 1 70px;
+      text-align: center;
+      padding: 18px;
+      border-radius: 0;
+      background: #fafafa;
+      border: 1px solid #f0f0f0
+    }
+
+    .why .item h4 {
+      margin: 6px 0;
+      color: #222
+    }
+
+    .why .item p {
+      margin: 6px 0;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    footer {
+      margin-top: 18px;
+      padding: 18px 0;
+      text-align: center;
+      color: var(--muted);
+      line-height: 150%;
+      font-size: 12px;
+      border-top: 1px solid #f3f3f3
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>MCJS</h1>
+      <h2>( 原 mc.js.cool )</h2>
+      <h2>无需下载, 直接在浏览器里玩 MC !</h2>
+      <h3>Eaglercraft 最佳中文版分支</h3>
+      <p>免费|无广告|全设备支持|多版本|中文优化|支持联机</p>
+      <p style="font-weight: bold;font-size: large;">原 MC.JS 已全新升级至 <a href="https://mcjs.cc"
+          style="color:var(--accent);font-size: x-large;">MCJS.CC</a><br>
+        新增大量客户端, 提升网页加载速度<br>
+        旧版 mc.js.cool 即将停止运营, 请尽快迁移至本站!</p>
+    </section>
+
+    <hr>
+    <p class="pp" style="font-weight: bold;">MCJS 官方中文优化 Eaglercraft 客户端 (推荐)</p>
+    <p class="ppp">最新 1.12.2 版本已支持中文版！</p>
+
+    <main class="grid" aria-label="版本列表">
+      <div class="card" style="border-color: var(--accent);">
+        <div>
+          <span class="chip1">推荐</span>
+          <span class="chip2">最佳兼容</span>
+          <h3>EaglercraftX 1.8.8</h3>
+          <div class="ver">MC JE 1.8.8 JS u53</div>
+          <div class="features">
+            <strong>+ MCJS 独家优化，具有完整中文支持</strong><br>
+            <strong>+ 发展最久，兼容性和稳定性最强</strong><br>
+            + 同时支持电脑键鼠操控和手机触屏操控<br>
+            + 支持单机、局域网联机和 P2P 联机<br>
+            + 支持光影，内置光影包、光线追踪包
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/1.8.8" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card" style="border-color: var(--accent);">
+        <div>
+          <span class="chip1">推荐</span>
+          <span class="chip2">最佳性能</span>
+          <h3>EaglercraftX 1.8.8 WASM</h3>
+          <div class="ver">MC JE 1.8.8 WASM-GC u53</div>
+          <div class="features">
+            <strong>+ MCJS 独家优化，具有完整中文支持</strong><br>
+            <strong>+ WASM 增强版，大幅提升性能</strong><br>
+            + 同时支持电脑键鼠操控和手机触屏操控<br>
+            + 支持单机、局域网联机和 P2P 联机<br>
+            + 支持光影，内置光影包、光线追踪包
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/1.8.8wasm" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card" style="border-color: var(--accent);">
+        <div>
+          <span class="chip">测试版</span>
+          <h3>Eaglercraft 1.12.2</h3>
+          <div class="ver">MC JE 1.12.2 JS u2</div>
+          <div class="features">
+            <strong>+ MCJS 独家优化，已完成大部分翻译</strong><br>
+            <strong>+ 目前最新的客户端版本</strong><br>
+            - 测试版仍在开发中，稳定性较差<br>
+            - 目前尚不支持联机、光影包<br>
+            - 此版本性能差，推荐使用 WASM 版
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/1.12.2" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card" style="border-color: var(--accent);">
+        <div>
+          <span class="chip">测试版</span>
+          <h3>Eaglercraft 1.12.2 WASM</h3>
+          <div class="ver">MC JE 1.12.2 WASM-GC u2</div>
+          <div class="features">
+            <strong>+ MCJS 独家优化，已完成大部分翻译</strong><br>
+            <strong>+ 目前最新的客户端版本</strong><br>
+            - 测试版仍在开发中，稳定性较差<br>
+            - 目前尚不支持联机、光影包
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/1.12.2wasm" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+    </main>
+
+    <hr>
+    <p class="pp">原版旧版 Eaglercraft 客户端</p>
+    <p class="ppp">早期版本搬运，只有英文版，无中文版，仅怀旧体验</p>
+
+    <main class="grid" aria-label="版本列表">
+
+      <div class="card">
+        <div>
+          <span class="chip">官方原版搬运</span>
+          <h3>Eaglercraft 1.6.4</h3>
+          <div class="ver">MC JE 1.6.4 JS</div>
+          <div class="features">
+            早期版本，怀旧体验
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/1.6.4" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">官方原版搬运</span>
+          <h3>Eaglercraft 1.5.2</h3>
+          <div class="ver">MC JE 1.5.2 JS SP2 Update</div>
+          <div class="features">
+            早期版本，怀旧体验
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/1.5.2" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">官方原版搬运</span>
+          <h3>Eaglercraft 1.2.5</h3>
+          <div class="ver">MC JE 1.2.5 JS</div>
+          <div class="features">
+            早期版本，怀旧体验
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/1.2.5" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">官方原版搬运</span>
+          <h3>Eaglercraft Beta 1.7.3</h3>
+          <div class="ver">MC Beta 1.7.3 JS</div>
+          <div class="features">
+            早期版本，怀旧体验
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/legacy/beta1.7.3.html" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">官方原版搬运</span>
+          <h3>Eaglercraft Beta 1.3</h3>
+          <div class="ver">MC Beta 1.3 JS</div>
+          <div class="features">
+            早期版本，怀旧体验
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/legacy/beta1.3.html" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">官方原版搬运</span>
+          <h3>Eaglercraft Alpha 1.2.6</h3>
+          <div class="ver">MC Alpha 1.2.6 JS</div>
+          <div class="features">
+            早期版本，怀旧体验
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/legacy/alpha1.2.6.html" target="_blank">开始游戏</a>
+        </div>
+      </div>
+    </main>
+
+    <hr>
+    <p class="pp">来自第三方的其它 Eaglercraft 客户端</p>
+    <p class="ppp">第三方开发的模组客户端可能提供独特的功能，但不受官方支持</p>
+
+    <main class="grid" aria-label="版本列表2">
+      <div class="card">
+        <div>
+          <span class="chip">第三方原版搬运</span>
+          <h3>PixelClient 1.8.8</h3>
+          <div class="ver">MC JE 1.8.8 JS Modded</div>
+          <div class="features">
+            由 PixelClient 定制的第三方客户端
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/pixelclient/1.8.8.html" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">第三方原版搬运</span>
+          <span class="chip">高性能 WASM</span>
+          <h3>PixelClient 1.8.8 WASM</h3>
+          <div class="ver">MC JE 1.8.8 WASM-GC Modded</div>
+          <div class="features">
+            由 PixelClient 定制的第三方客户端
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/pixelclient/1.8.8wasm.html" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">第三方原版搬运</span>
+          <h3>PixelClient 1.12.2</h3>
+          <div class="ver">MC JE 1.12.2 JS Modded</div>
+          <div class="features">
+            由 PixelClient 定制的第三方客户端
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/pixelclient/1.12.2.html" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">第三方原版搬运</span>
+          <span class="chip">高性能 WASM</span>
+          <h3>PixelClient 1.12.2 WASM</h3>
+          <div class="ver">MC JE 1.12.2 WASM-GC Modded</div>
+          <div class="features">
+            由 PixelClient 定制的第三方客户端
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/pixelclient/1.12.2wasm.html" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">第三方原版搬运</span>
+          <h3>TuffClient 1.12.2</h3>
+          <div class="ver">MC JE 1.12.2 JS Modded</div>
+          <div class="features">
+            由 TuffClient 定制的第三方客户端
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/tuffclient/1.12.2" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">第三方原版搬运</span>
+          <span class="chip">高性能 WASM</span>
+          <h3>TuffClient 1.12.2 WASM</h3>
+          <div class="ver">MC JE 1.12.2 WASM-GC Modded</div>
+          <div class="features">
+            由 TuffClient 定制的第三方客户端
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btn" href="https://play.mcjs.cc/tuffclient/1.12.2wasm" target="_blank">开始游戏</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">待收录</span>
+          <h3>StarlikeClient 1.8.8</h3>
+          <div class="ver">MC JE 1.8.8 JS Modded</div>
+          <div class="features">
+            由 StarlikeClient 定制的第三方客户端
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btno">敬请期待</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">待收录</span>
+          <h3>ResentClient 1.8.8</h3>
+          <div class="ver">MC JE 1.8.8 JS Modded</div>
+          <div class="features">
+            由 ResentClient 定制的第三方客户端
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btno">敬请期待</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">待收录</span>
+          <h3>AstraClient 1.8.8</h3>
+          <div class="ver">MC JE 1.8.8 JS Modded</div>
+          <div class="features">
+            由 AstraClient 定制的第三方客户端
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btno">敬请期待</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="chip">待收录</span>
+          <h3>AstraClient 1.8.8 WASM</h3>
+          <div class="ver">MC JE 1.8.8 WASM-GC Modded</div>
+          <div class="features">
+            由 AstraClient 定制的第三方客户端
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a class="btno">敬请期待</a>
+        </div>
+      </div>
+    </main>
+
+    <hr>
+    <p class="pp" style="margin-bottom: 22px;">为什么选择 MCJS ?</p>
+
+    <section class="why">
+      <div class="item">
+        <div style="font-size:28px;color:var(--accent)">🆓</div>
+        <h4>免费且无广告</h4>
+        <p>永远完全免费，没有烦人的弹窗，只为给您最佳的游戏体验</p>
+      </div>
+      <div class="item">
+        <div style="font-size:28px;color:var(--accent)">⬇️</div>
+        <h4>无需下载</h4>
+        <p>无需下载或安装，直接在浏览器里玩</p>
+      </div>
+      <div class="item">
+        <div style="font-size:28px;color:var(--accent)">🌏</div>
+        <h4>多个版本</h4>
+        <p>提供最全的所有游戏版本，可以任意选择</p>
+      </div>
+      <div class="item">
+        <div style="font-size:28px;color:var(--accent)">👥</div>
+        <h4>多人游戏</h4>
+        <p>支持局域网联机和 P2P 联机，与朋友一起游戏</p>
+      </div>
+    </section>
+    <!-- 展开内容 -->
+    <section class="doc">
+      <h3>简介</h3>
+      <p>在一台临时的电脑上想快速体验 MC ？打开 MCJS.CC ，不用下载 Java/启动器/客户端，不需要繁琐的配置操作，打开网页就能玩！<br>
+        <strong>Eaglercraft 介绍：</strong>Eaglercraft 是由 Eaglercraft 开发团队制作的在 Javascript 上运行的网页版 MC ，基于 MCJE 。使用 TeaVM 和
+        OpenGL 模拟器来运行与浏览器完全兼容的 Java 虚拟机。Eaglercraft 是众多网页版 MC 开源项目中完成度最高的，支持 MC 的几乎全部特性。<br>
+        <strong>MCJS 介绍：</strong>MCJS 是专为简体中文用户优化的 Eaglercraft 的中文版，是众多 Eaglercraft 分支项目中汉化最好的，还原 MC 原版体验。MCJS 仅为
+        Eaglercraft 开源项目的中文汉化分支，与 Eaglercraft 官方没有从属关系。<br>
+        <strong>关于 JS 版 和 WASM 版：</strong>普通的 JS 版可以在大多数设备上运行。WASM 是一种较新的技术，可提供更好的性能（更高的帧数，更少的延迟），但需要电脑端的最新 Chrome
+        浏览器才能支持。如果您的浏览器支持它，WASM 版是最推荐的选择。
+      </p>
+    </section>
+    <section class="doc">
+      <h3>常见问题（FAQ）</h3>
+      <p class="small"><strong>问：</strong>游戏打不开/卡死/崩溃</p>
+      <p>答：请使用最新的官方 Google Chrome 浏览器访问，尽量不要使用其它浏览器。设备最好使用性能较好的电脑，而非手机等移动设备。
+        如果已经是电脑 Chrome 浏览器，推荐使用 WASM 版，性能最佳。</p>
+
+      <p class="small"><strong>问：</strong>各种多人游戏联机问题</p>
+      <p>答：MCJS 支持且只支持局域网联机和 P2P 远程联机。<br>
+        局域网联机——将多个设备连接至同一个网络下，其中一个设备开启“共享世界”，其它设备的“多人游戏”里会自动搜索到开启的自定义房间。<br>
+        P2P 远程联机——当多个设备不在同一个网络时，确保开启“共享世界”的设备有公网 IP 或 FullCone(NAT1)
+        ，且所有设备连接至同一个中继服务器，其它设备的“多人游戏-直接连接-加入共享世界”里输入对应的邀请码就能远程联机。<br>
+        MCJS 不提供任何形式的联机服务（规避风险）。您的联机数据不经过 MCJS 的服务器，而是 P2P 直连。若您没有公网 IP 或 FullCone(NAT1) 则无法实现远程联机（随着 IP
+        地址的枯竭，大部分用户都处于大内网 NAT 环境中，不过您可以尝试联系网络运营商开启公网）。</p>
+
+      <p class="small"><strong>问：</strong>手机、平板等移动触屏设备支持</p>
+      <p>答：网页版 MC 是主要为电脑端设计的，<strong>有且只有 MCJS 官方 1.8.8
+          版本能在移动触屏设备上运行且适配触屏操作，对于其他版本、其他设备不提供任何支持和维护</strong>。推荐使用电脑浏览器体验 MCJS ，在电脑版上所有版本均提供支持。</p>
+
+      <p class="small"><strong>问：</strong>新版本（1.13+）或模组是否支持</p>
+      <p>答：不支持，将来也不会支持。这是因为技术限制，您能在网页上玩到的 MC 最新版本就是 1.12.2 了。</p>
+
+      <p class="small"><strong>问：</strong>离线游戏文件下载问题</p>
+      <p>答：为了保证玩家都统一使用最新版本以提升联机兼容性，MCJS 暂不提供离线下载，未来可能会重新开放离线下载，敬请期待。</p>
+      <h3>提出其它问题/提交反馈和建议</h3>
+      <p>MCJS 目前有且只有 Github 这一个官方支持平台，其余任何平台、任何群聊均为假冒。</p>
+      <a href="https://github.com/mcjsteam/mc.js/issues" style="color:var(--accent);font-size: 22px;">点击前往 MCJS 官方
+        Github issues</a>
+      <p><strong>多看常见问题，多看往期 issues 回答，再提问！<br>
+          请勿重复提问常见问题、提交与 MCJS 无关的内容，否则我们将禁止您再次提问。</strong>
+      </p>
+      <p>提出其它问题、提交反馈、提供建议都可以直接发 issues 。<br>欢迎提交您的问题！我们会在 48 小时内回复。</p>
+      <h3>联系我们/合作/推广</h3>
+      <p>同前一条，向我们的 Github 仓库提交一条 issues ，描述清楚您的需求即可。</p>
+      <h3>赞助/支持我们</h3>
+      <p>给我们的 Github 仓库点上一个 star ，就是您能对我们最大的帮助！<br>若您想为我们提供免费服务，可以提交 issues 申请。</p>
+    </section>
+
+    <section class="doc">
+      <h3>隐私与服务条款</h3>
+      <p>
+        本网站是纯静态 HTML
+        网站，我们不会收集任何的用户信息，我们不会跟踪您，我们不会将您的数据出售给第三方。同时，您不会将我们的服务用于任何非法或未经授权的目的，您使用我们的服务不会违反任何适用的法律或法规，您已阅读并同意
+        Minecraft EULA 协议。<br>
+        注意 / Notice : 本网站只面向简体中文用户开放，对于其它语言的用户，我们不提供支持，请自行寻找您当地的类似项目。/ This website is only available to Simplified
+        Chinese users. We do not provide support for users of other languages. Please find similar projects in your
+        local area on your own.
+      </p>
+      <h3>版权声明</h3>
+      <p>
+        本网站仅整合了从网络上收录的部分开源网页 MC 项目的修改版本，本网站上的所有资源均来自第三方，所有内容仅供学习参考。MCJS 并不提供付费在线服务。<br>部分项目可能含有版权争议，为防止本站出现版权问题，用户在使用
+        MCJS
+        时，MCJS 默认用户已购正版 Minecraft ，已同意 Minecraft EULA 协议。若不同意许可协议，请退出。<br>MCJS 不用于任何的商业用途，MCJS
+        不提供离线盗版资源（部分链接反向代理到站外，不由我们托管），也不允许任何的恶意盗版游戏行为。
+      </p>
+    </section>
+
+    <footer>
+      Copyright © 2022-2026 MCJS. All rights reserved.
+      <br>
+      本站只是MC爱好者的开源项目汇聚，与"Minecraft"以及"我的世界"没有从属关系。
+      <br>
+      We are not affiliated with Minecraft, Mojang, or Microsoft. This website is for educational purposes only. We do
+      not host any games on our servers nor do we condone piracy.
+    </footer>
+  </div>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "13f165c1dff54898a8b4754fcb77c7c7"}'></script><!-- Cloudflare Pages Analytics --></body>
+
+</html>
